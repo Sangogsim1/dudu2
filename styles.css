@@ -1,0 +1,152 @@
+:root {
+	--bg: #0b1220;
+	--panel: #111827;
+	--text: #e5e7eb;
+	--muted: #9ca3af;
+	--brand: #3b82f6;
+	--accent: #22c55e;
+	--danger: #ef4444;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", Arial, sans-serif;
+}
+
+.app-header {
+	padding: 16px;
+	border-bottom: 1px solid #1f2937;
+	background: linear-gradient(180deg, #0b1220 0%, #0e1627 100%);
+}
+
+.app-header h1 {
+	margin: 0 0 12px;
+	font-size: 20px;
+}
+
+.tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+.tab {
+	background: #0f172a;
+	color: var(--text);
+	border: 1px solid #1f2937;
+	padding: 8px 12px;
+	border-radius: 8px;
+	cursor: pointer;
+	user-select: none;
+}
+.tab.active { border-color: var(--brand); color: #fff; box-shadow: 0 0 0 2px rgba(59,130,246,.25) inset; }
+
+.app-main { max-width: 980px; margin: 0 auto; padding: 16px; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.toolbar { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.toolbar button { background: var(--brand); color: white; border: 0; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+article#report-content {
+	background: var(--panel);
+	border: 1px solid #1f2937;
+	border-radius: 12px;
+	padding: 16px;
+	line-height: 1.6;
+}
+article#report-content[contenteditable="true"] { outline: 2px dashed var(--brand); background: #0e1526; }
+
+.card {
+	background: var(--panel);
+	border: 1px solid #1f2937;
+	border-radius: 12px;
+	padding: 16px;
+	display: grid;
+	gap: 10px;
+}
+
+label { font-size: 14px; color: var(--muted); }
+input, select, button {
+	padding: 10px 12px;
+	border-radius: 10px;
+	border: 1px solid #1f2937;
+	background: #0f172a;
+	color: var(--text);
+}
+button { cursor: pointer; }
+.row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+.hint { color: var(--muted); font-size: 12px; }
+.result { 
+	background: #f8f9fa; 
+	border: 1px solid #dee2e6; 
+	padding: 16px; 
+	border-radius: 8px; 
+	min-height: 32px; 
+	white-space: pre-line; 
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans KR", sans-serif;
+	font-size: 14px;
+	line-height: 1.6;
+	color: #212529;
+}
+
+/* 취득세 결과 상세 표시 스타일 */
+#tax-result {
+	background: #ffffff;
+	border: 2px solid #007bff;
+	box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+#tax-result:not(:empty) {
+	border-left: 4px solid #007bff;
+}
+
+/* 수동 세율 섹션 스타일 */
+#manual-rate-section {
+	background: #0a0f1a;
+	border: 1px solid #1f2937;
+	border-radius: 8px;
+	padding: 12px;
+	margin-top: 8px;
+	transition: all 0.3s ease;
+}
+
+#manual-rate-section .hint {
+	margin-top: 8px;
+	padding: 8px;
+	background: #0c1323;
+	border-radius: 6px;
+	border-left: 3px solid var(--brand);
+}
+
+/* 체크박스 스타일 개선 */
+input[type="checkbox"] {
+	width: 16px;
+	height: 16px;
+	margin-right: 8px;
+	accent-color: var(--brand);
+}
+
+/* 세율 안내 스타일 */
+details.hint summary {
+	cursor: pointer;
+	font-weight: 500;
+	color: var(--text);
+}
+
+details.hint[open] summary {
+	color: var(--brand);
+}
+
+.app-footer { text-align: center; padding: 24px; color: var(--muted); }
+
+@media print {
+	.app-header, .tabs, .toolbar, .app-footer { display: none !important; }
+	.app-main { max-width: none; margin: 0; padding: 0; }
+	#tab-report { display: block; }
+	body { background: #fff; color: #000; }
+	article#report-content { border: 0; background: #fff; }
+}
+
+
+
